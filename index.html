@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<!-- $Id: index.html.en 837 2015-10-01 14:37:41Z kasper $ -->
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>Test - Event and Station Map</title>
+
+
+	<!-- Style definitions -->
+	<link rel="stylesheet" href="css/main.css" />
+	<!-- link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" / -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/cupertino/jquery-ui.css" />
+	<link rel="stylesheet" href="css/theme.blue.css"/>
+	<link rel="stylesheet" href="css/jquery.tablesorter.pager.css" />
+	<link rel="stylesheet" href="css/leaflet.css" />
+	<!-- link rel="stylesheet" href="external/css/dvf.css" type="text/css" media="screen" / -->
+	<link rel="stylesheet" href="css/leaflet.label.css" type="text/css" media="screen" />
+	<!-- <link rel="stylesheet" href="external/easyPrint.css"/> -->
+
+	<!-- jQuery & jQueryUI -->
+	<script type="text/javascript" src="external/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="external/jquery-ui.js"></script>
+
+	<!-- Localtime & sprintf -->
+	<script type="text/javascript" src="external/jquery.localtime-0.9.1.min.js"></script>
+	<script type="text/javascript" src="external/sprintf.min.js"></script>
+
+	<!-- Tablesorter: required -->
+	<script type="text/javascript" src="external/jquery.tablesorter.min.js"></script>
+	<script type="text/javascript" src="external/jquery.tablesorter.widgets.min.js"></script>
+	<script type="text/javascript" src="external/widget-pager.js"></script>
+	<!-- script type="text/javascript" src="external/jquery.tablesorter.pager.min.js"></script -->
+	<!-- script type="text/javascript" src="external/widget-scroller.js"></script -->
+
+	<!-- Leaflet -->
+	<script type="text/javascript" src="external/leaflet.js"></script>
+	<script type="text/javascript" src="external/TileLayer.Grayscale.js"></script>
+	<script type="text/javascript" src="external/leaflet-dvf.js"></script>
+	<script type="text/javascript" src="external/leaflet.label.js"></script>
+	<!-- <script src="external/jQuery.print.js"></script> -->
+	<!-- <script src="external/leaflet.easyPrint.js"></script> -->
+
+	<!-- Map, Events & Stations -->
+	<script type="text/javascript" src="misc.js"></script>
+	<script type="text/javascript" src="geolocation.js"></script>
+	<script type="text/javascript" src="specialevents.js"></script>
+	<script type="text/javascript" src="map.js"></script>
+	<script type="text/javascript" src="events.js"></script>
+	<script type="text/javascript" src="stations.js"></script>
+</head>
+
+<body>
+	<!-- noscript -->
+	<noscript>
+		<div class="noscript">
+			<div class="noscriptcontent">
+				<h2>JavaScript disabled!</h2>
+				<p>This page requires JavaScript to work. Please enable JavaScript.</p>
+				<div class="accordioncontent">
+    				<h4>Anschrift</h4>
+				</div>
+			</div>
+		</div>
+	</noscript>
+	<!-- Tabs -->
+	<div class="info" id="tabs">
+		<ul>
+			<li><a href="#eventstab"><span>Events</span></a></li>
+<!--			<li><a href="#stationstab"><span>Stations</span></a></li>
+<!--			<li><a href="#moretab"><span>More</span></a></li>
+			<li class="infotab"><a href="#infotab"><span>Info</span></a></li> -->
+		</ul>
+		<!-- Ereignisse -->
+		<div class="tab" id="eventstab">
+			<div class="pager events" id="eventspager">
+				<img src="img/first.png" class="first" alt="First" />
+				<img src="img/prev.png" class="prev" alt="Prev" />
+				<span class="pagedisplay"></span>
+				<img src="img/next.png" class="next" alt="Next" />
+				<img src="img/last.png" class="last" alt="Last" />
+				<select class="pagesize" title="Select page size">
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="15">15</option>
+					<option value="20">20</option>
+					<option value="25">25</option>
+					<option value="30">30</option>
+					<option value="35">35</option>
+				</select>
+				<select class="gotoPage" title="Select page number"></select>
+			</div>
+			<table class="tablesorter" id="eventstable">
+				<colgroup>
+					<col width="85" />
+					<col width="50" />
+					<col width="50" />
+					<col />
+					<col width="30" />
+				</colgroup>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Time</th>
+						<th>Mag.</th>
+						<th>Region</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+<!--			<p class="table-caption">
+				Events of the last <span id="events-timespan">180</span> days with magnitude <span id="events-minmag">1.2</span> or larger in the area of the map and special events in adjacents regions. Download as <a id="events-csv-link" href="link" download="events.csv">CSV file</a>.
+			</p>
+			<p class="table-caption">
+				<span id="events-type">Symbols:</span>
+			</p>
+			<p class="table-caption">
+				Reverse Geolocation courtesy of <a href="http://photon.komoot.de/" target="_blank">Photon by Komoot</a>
+			</p>
+-->
+
+		</div>
+		<!-- Stations -->
+<!--		<div class="tab" id="stationstab">
+			<div class="pager stationspager" id="stationspager">
+				<img src="img/first.png" class="stationsfirst" alt="First" />
+				<img src="img/prev.png" class="stationsprev" alt="Prev" />
+				<span class="stationspagedisplay"></span>
+				<img src="img/next.png" class="stationsnext" alt="Next" />
+				<img src="img/last.png" class="stationslast" alt="Last" />
+				<select class="stationspagesize" title="Select page size">
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="15">15</option>
+					<option value="20">20</option>
+					<option value="25">25</option>
+					<option value="30">30</option>
+					<option value="35">35</option>
+				</select>
+				<select class="stationsgotoPage" title="Select page number"></select>
+			</div>
+			<table class="tablesorter" id="stationstable">
+				<colgroup>
+					<col width="77" />
+					<col/>
+					<col width="100" align="char" char="." />
+					<col width="100" align="char" char="." />
+				</colgroup>
+				<thead>
+					<tr>
+						<th>Network</th>
+						<th>Station</th>
+						<th>Latitude [°]</th>
+						<th>Longitude [°]</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div> -->
+	</div>
+	<!-- Logo -->
+	<!--	<div class="rublogo"><a href="http://www.gmg.ruhr-uni-bochum.de/geophysik/seisobs"><img class="rublogo" src="logo_RUB_155x30.png" alt="Ruhr-University Bochum" title="Ruhr-University Bochum" border="0"/></a></div> -->
+	<!-- Map -->
+	<div id="map" class="map"></div>
+<!--	<div id="spinner" class="spinner" style="display:none;"><img id="img-spinner" src="spinner.gif" alt="Loading"/><br />Loading ...</div> -->
+</body>
+</html>
