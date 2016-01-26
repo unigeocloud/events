@@ -77,6 +77,8 @@
 	}
 	a.map-link {
 		float: right;
+		visibility: hidden;
+		display: none;
 	}
 	li.infotab {
 		float: right!important;

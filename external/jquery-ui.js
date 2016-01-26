@@ -13810,7 +13810,7 @@ $.widget( "ui.tabs", {
 		active: null,
 		collapsible: false,
 		event: "click",
-		heightStyle: "content",
+		heightStyle: "auto",
 		hide: null,
 		show: null,
 

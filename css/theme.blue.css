@@ -109,6 +109,10 @@
 .tablesorter-blue tbody > tr.odd:hover + tr.tablesorter-childRow + tr.tablesorter-childRow > td {
 	background: #bfbfbf;
 }
+.tablesorter-childRow{
+	visibility: hidden;
+	display: none;
+}
 
 /* table processing indicator */
 .tablesorter-blue .tablesorter-processing {

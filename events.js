@@ -96,7 +96,8 @@ function ajaxLoadEvents(stime, etime, eventid, url, target) {
 //				maxlon: sprintf('%.2f', mapBounds.getEast()+config['map']['latlngDelta']),
 				minlon: sprintf('%.2f', -179),
 				maxlon: sprintf('%.2f', 179),
-				minmag: sprintf('%.1f', config['event']['minMag']-config['event']['minMagDelta']),
+				mag: sprintf('%.1f', config['event']['minMag']-config['event']['minMagDelta']),
+//				minmag: sprintf('%.1f', config['event']['minMag']-config['event']['minMagDelta']),
 			};
 			if ( etime ) {
 				request_data['endtime'] = sprintf("%d-%02d-%02d", etime.getFullYear(), etime.getMonth()+1, etime.getDate());
@@ -111,8 +112,9 @@ function ajaxLoadEvents(stime, etime, eventid, url, target) {
 		dataType: "xml",
 		success: function (xml) {
 			$(xml).find('event').each(function () {
-				var id = $(this).attr('publicID').split('=')[1];
+				var id = $(this).attr('publicID').split('/')[2];
 				var mag = $(this).find('magnitude > mag > value').text();
+//				var mag = 3;
 				var otime = $(this).find('origin > time > value').text();
 				var lng = $(this).find('origin > longitude > value').text();
 				var lat = $(this).find('origin > latitude > value').text();
@@ -135,7 +137,7 @@ function ajaxLoadEvents(stime, etime, eventid, url, target) {
 							+ '<td class="utctime-time">'+otime.split('.')[0]+'Z</td>'
 							+ sprintf('<td class="ar">%.1f</td>', Number(mag))
 
-							+ '<td><a href="#" class="toggle" eventid="'+id+'">'+location+'</a><a class="map-link" href="#" eventid="'+id+'">map</a></td>'
+							+ '<td>'+location+'<a class="map-link" href="#" eventid="'+id+'">map</a></td>'
 //							+ '<td><a href="#" class="toggle" eventid="'+id+'">'+location+'</a> <a class="map-link" href="#" eventid="'+id+'">map</a></td>'
 
 							+ '</tr>';
@@ -340,13 +342,14 @@ function highlightEvent( id ) {
 		color: config['event']['markerColor'],
 		fillOpacity: config['event']['markerOpacity'],
 	};
+
 	$("#eventstable > tbody > tr:not(.filtered)").find("a.map-link").each( function() {
 		if ( $(this).attr("eventid") ) {
 			if ( $(this).attr("eventid") == id ) {
 				eventTable[$(this).attr("eventid")].setStyle(highlightStyle);
 				eventTable[$(this).attr("eventid")].bringToFront();
 				$(this).addClass('first');
-				$(this).text('map (red)');
+				//$(this).text('map (red)');
 			} else {
 				eventTable[$(this).attr("eventid")].setStyle(normalStyle);
 				$(this).removeClass('first');
@@ -401,22 +404,24 @@ $(document).ready(function() {
 		highlightFirstEvent();
 	});
 	// show / hide event info
-	$('#eventstable').delegate('.toggle', 'click' , function(){
+	$('#eventstable').delegate('.tablesorter-hasChildRow', 'mouseover' , function(){
 		// load event details
-		var eventid = $(this).attr('eventid');
-		( eventDetails[eventid] ) ? null : ajaxLoadEventInfo(eventid);
+		var eventid = $(this).find('.toggle').attr('eventid');
+		//( eventDetails[eventid] ) ? null : ajaxLoadEventInfo(eventid);
 
 		// toggle visibility of selected row
-		$(this).closest('tr').nextUntil('tr.tablesorter-hasChildRow').find('td').toggle('slow');
+		//$(this).closest('tr').nextUntil('tr.tablesorter-hasChildRow').find('td').toggle('slow');
 		// mark currently selected row and remove class selected from all other rows
 		// hide other rows
 		$(this).closest('tr').nextUntil('tr.tablesorter-hasChildRow').find('td').addClass('selected-now');
+
 		$(this).closest('tbody').find('td.selected').each(function(){
 			if ( ! $(this).hasClass('selected-now') ) {
 				$(this).hide();
 				$(this).removeClass('selected');
 			};
 		});
+
 		$(this).closest('tr').nextUntil('tr.tablesorter-hasChildRow').find('td').each(function(){
 			$(this).removeClass('selected-now');
 			var selected = $(this).hasClass('selected');
@@ -428,6 +433,7 @@ $(document).ready(function() {
 				highlightEvent($(this).attr('eventid'));
 			};
 		});
+
 		return false;
 	});
 	// update selection / type info

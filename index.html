@@ -46,7 +46,7 @@
 	<script type="text/javascript" src="specialevents.js"></script>
 	<script type="text/javascript" src="map.js"></script>
 	<script type="text/javascript" src="events.js"></script>
-	<script type="text/javascript" src="stations.js"></script>
+<!--	<script type="text/javascript" src="stations.js"></script> -->
 </head>
 
 <body>
@@ -63,8 +63,9 @@
 		</div>
 	</noscript>
 	<!-- Tabs -->
-	<div class="info" id="tabs">
-		<ul>
+	<div class="info" id="tabs" style="height: 100px;">
+
+		<ul style="display: none">
 			<li><a href="#eventstab"><span>Events</span></a></li>
 <!--			<li><a href="#stationstab"><span>Stations</span></a></li>
 <!--			<li><a href="#moretab"><span>More</span></a></li>
@@ -72,23 +73,7 @@
 		</ul>
 		<!-- Ereignisse -->
 		<div class="tab" id="eventstab">
-			<div class="pager events" id="eventspager">
-				<img src="img/first.png" class="first" alt="First" />
-				<img src="img/prev.png" class="prev" alt="Prev" />
-				<span class="pagedisplay"></span>
-				<img src="img/next.png" class="next" alt="Next" />
-				<img src="img/last.png" class="last" alt="Last" />
-				<select class="pagesize" title="Select page size">
-					<option value="5">5</option>
-					<option value="10">10</option>
-					<option value="15">15</option>
-					<option value="20">20</option>
-					<option value="25">25</option>
-					<option value="30">30</option>
-					<option value="35">35</option>
-				</select>
-				<select class="gotoPage" title="Select page number"></select>
-			</div>
+
 			<table class="tablesorter" id="eventstable">
 				<colgroup>
 					<col width="85" />
@@ -108,6 +93,24 @@
 				<tbody>
 				</tbody>
 			</table>
+
+			<div class="pager events" id="eventspager">
+				<img src="img/first.png" class="first" alt="First" />
+				<img src="img/prev.png" class="prev" alt="Prev" />
+				<span class="pagedisplay"></span>
+				<img src="img/next.png" class="next" alt="Next" />
+				<img src="img/last.png" class="last" alt="Last" />
+				<select class="pagesize" title="Select page size">
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="15">15</option>
+					<option value="20">20</option>
+					<option value="25">25</option>
+					<option value="30">30</option>
+					<option value="35">35</option>
+				</select>
+				<select class="gotoPage" title="Select page number"></select>
+			</div>
 <!--			<p class="table-caption">
 				Events of the last <span id="events-timespan">180</span> days with magnitude <span id="events-minmag">1.2</span> or larger in the area of the map and special events in adjacents regions. Download as <a id="events-csv-link" href="link" download="events.csv">CSV file</a>.
 			</p>

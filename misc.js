@@ -91,8 +91,8 @@ var stationTable = {};
 var config = {
 	ajax: {
 		timeout: 10000, // 10 seconds
-//		eventURL: '/fdsnws/event/1/query',
-		eventURL: 'http://service.iris.edu/fdsnws/event/1/query',
+		eventURL: 'http://node806-env-6372222.portal.unigeocloud.com:11012/fdsnws/event/1/query',
+//		eventURL: 'http://service.iris.edu/fdsnws/event/1/query',
 		dlsvURL: 'dlsv',
 //		mseedURL: '/fdsnws/dataselect/1/query',
 		mseedURL: 'http://service.iris.edu/fdsnws/dataselect/1/query',
@@ -114,7 +114,7 @@ var config = {
 	},
 	map: {
 		zoomDefault: 2,
-		zoomFocus: 12,
+		zoomFocus: 8,
 		centerDefault: [20.85, 7.0],
 		timespan: 180,
 		latlngDelta: 0.1,

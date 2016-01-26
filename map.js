@@ -84,7 +84,7 @@ function addEventMarker(id, lat, lng, mag, type) {
 /* handle to show events on map */
 function initMapLink() {
 	$("#eventstable > tbody > tr > td > a.map-link").off('click');
-	$("#eventstable > tbody > tr > td > a.map-link").on('click' , function(){
+	$("#eventstable > tbody > tr > td > a.map-link").on('click', function () {
 		var highlightStyle = {
 			color: config['event']['markerColorH'],
 			fillColor: config['event']['markerColorH'],
@@ -99,34 +99,37 @@ function initMapLink() {
 		// mark currently selected link and remove class selected from all other links
 		// set everything to normal state
 		$(this).addClass('selected-now');
-		$("#eventstable > tbody > tr:not(.filtered) > td > a.map-link:not(.selected-now)").each(function(){
+		$("#eventstable > tbody > tr:not(.filtered) > td > a.map-link:not(.selected-now)").each(function () {
 			$(this).removeClass('selected');
 			$(this).text('Map');
 			eventTable[$(this).attr('eventid')].setStyle(normalStyle);
 		});
 		// switch event of first row to normalStyle if it is not the selected one
 		( $(this).hasClass('first') ) ? null : eventTable[$("#eventstable > tbody > tr:not(.filtered)").first().find("a.map-link").attr("eventid")].setStyle(normalStyle);
-		$(this).each(function(){
+		$(this).each(function () {
 			$(this).removeClass('selected-now');
 			// selected -> unselected
-			if ( $(this).hasClass('selected') ) {
+			if ($(this).hasClass('selected')) {
 				$(this).removeClass('selected');
 				$(this).text('Map');
 				map.setView(config['map']['centerDefault'], config['map']['zoomDefault']);
 				eventTable[$(this).attr('eventid')].setStyle(normalStyle);
 				highlightFirstEvent();
-			// unselected -> selected
+				// unselected -> selected
 			} else {
 				$(this).addClass('selected');
 				$(this).text('at focus (red)');
 				map.setView(eventTable[$(this).attr('eventid')].getLatLng(), config['map']['zoomFocus']);
 				eventTable[$(this).attr('eventid')].setStyle(highlightStyle)
-			};
+			}
+			;
 		});
 		return false;
 	});
+	$("#eventstable > tbody > tr.tablesorter-hasChildRow").on('click', function () {
+		$(this).find('a.map-link').click();
+	});
 };
-
 /**********************************************************************
  * document ready                                                     *
  **********************************************************************/
