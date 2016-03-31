@@ -1,104 +1,117 @@
-<style>
-	body {
-		padding: 0;
-		margin: 0;
-	}
-	html, body, #map {
-		z-index: 1;
-		position: absolute;
-		top: 0;
-		left: 0;
-		margin: 0;
-		width: 100%;
-		height: 100%;
-		font-family: sans-serif;
-	}
-	div.noscript {
-		z-index: 20000;
-		position: absolute;
-		left: 0px;
-		top: 0px;
-		width: 100%;
-		height: 200%;
-		background: rgb(255, 255, 255);
-	}
-	div.noscriptcontent {
-		z-index: 20010;
-		margin: 45px;
-		font-size: small;
-	}
-	div.info {
-		z-index: 10000;
-		position: absolute;
-		left: 10px;
-		top: 14px;
-		padding: 4px;
-		width: 435px;
-		font-size: small;
-		font: sans-serif;
-		background: rgb(255, 255, 255);
-		background: rgba(255, 255, 255, 0.95);
-		border-radius: 4px;
-		box-shadow: 0 1px 5px rgba(0,0,0,0.65);
-		overflow: auto;
-	}
-	div.tab {
-		z-index: 10010;
-		width: 400px;
-		padding: 0px;
-		float: left;
-		font-size: x-small;
-		font: sans-serif;
-		background: rgb(255, 255, 255);
-		background: rgba(25, 255, 255, 0.95);
-	}
-	div.accordioncontent {
-		z-index: 10010;
-		margin: 0px!important;
-		padding: 5px!important;
-		font: sans-serif;
-	}
-	div.rublogo {
-		z-index: 10000;
-		position: absolute;
-		top: 10px;
-		right: 46px;
-		height: 33px;
-		padding: 10px;
-		width: 155px;
-		font-size: x-small;
-		font: sans-serif;
-		color: #003560;
-		background: rgb(255, 255, 255);
-		background: rgba(255, 255, 255, 0.95);
-		border-radius: 4px;
-		box-shadow: 0 1px 5px rgba(0,0,0,0.65);
-		
-	}
-	a.map-link {
-		float: right;
-		visibility: hidden;
-		display: none;
-	}
-	li.infotab {
-		float: right!important;
-	}
-	td.ar {
-		text-align: right;
-	}
-	p.table-caption {
-		font-size: smaller;
-	}
-	div.spinner {
-	    position: fixed;
-	    top: 50%;
-	    left: 50%;
-	    margin-left: -64px; /* half width of the spinner gif */
-	    margin-top: -8px; /* half height of the spinner gif */
-	    text-align:center;
-	    z-index: 19000;
-	    overflow: auto;
-	    width: 128px; /* width of the spinner gif */
-	    height: 40px; /*hight of the spinner gif +2px to fix IE8 issue */
-	}
-</style>
+html, body {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	margin: 0 auto;
+}
+
+.content {
+	margin-left:410px;
+	height:100%;
+}
+
+.sidebar {
+	width: 410px;
+	float:left;
+	height:100%;
+}
+
+html, body, #map {
+	z-index: 1;
+	/*position: absolute;*/
+	top: 0;
+	left: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	font-family: sans-serif;
+}
+div.noscript {
+	z-index: 20000;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 200%;
+	background: rgb(255, 255, 255);
+}
+div.noscriptcontent {
+	z-index: 20010;
+	margin: 45px;
+	font-size: small;
+}
+div.info {
+	width: 100%;
+	height: 100%;
+	font-size: small;
+	font-family: sans-serif;
+	border: none;
+	background: white;
+}
+div.tab {
+	z-index: 10010;
+	width: 400px;
+	padding: 0;
+	float: left;
+	font-size: x-small;
+	font-family: sans-serif;
+	background: rgb(255, 255, 255);
+	background: rgba(25, 255, 255, 0.95);
+}
+div.accordioncontent {
+	z-index: 10010;
+	margin: 0 !important;
+	padding: 5px!important;
+	font-family: sans-serif;
+}
+div.rublogo {
+	z-index: 10000;
+	position: absolute;
+	top: 10px;
+	right: 46px;
+	height: 33px;
+	padding: 10px;
+	width: 155px;
+	font-size: x-small;
+	font-family: sans-serif;
+	color: #003560;
+	background: rgb(255, 255, 255);
+	background: rgba(255, 255, 255, 0.95);
+	border-radius: 4px;
+	box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+
+}
+a.map-link {
+	float: right;
+	visibility: hidden;
+	display: none;
+}
+li.infotab {
+	float: right!important;
+}
+td.ar {
+	text-align: right;
+}
+p.table-caption {
+	font-size: smaller;
+}
+div.spinner {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -64px; /* half width of the spinner gif */
+	margin-top: -8px; /* half height of the spinner gif */
+	text-align:center;
+	z-index: 19000;
+	overflow: auto;
+	width: 128px; /* width of the spinner gif */
+	height: 40px; /*hight of the spinner gif +2px to fix IE8 issue */
+}
+
+.sidebar .ui-tabs .ui-tabs-panel {
+	padding: 0 2px;
+}
